@@ -1,0 +1,82 @@
+<div class="control-panel">
+  <ng-container *ngIf="firstTimePlace">
+    <div class="input-group">
+      <div class="input-field">
+        <label>X:</label>
+        <input
+          type="number"
+          title="x-direction"
+          [(ngModel)]="position.x"
+          min="0"
+          max="7"
+        />
+      </div>
+      <div class="input-field">
+        <label>Y:</label>
+        <input
+          type="number"
+          title="y-direction"
+          [(ngModel)]="position.y"
+          min="0"
+          max="7"
+        />
+      </div>
+      <div class="input-field">
+        <label>Direction:</label>
+        <select [(ngModel)]="position.direction">
+          <option value="NORTH">NORTH</option>
+          <option value="EAST">EAST</option>
+          <option value="SOUTH">SOUTH</option>
+          <option value="WEST">WEST</option>
+        </select>
+      </div>
+      <div class="input-field color-selection">
+        <label>Color:</label>
+        <div class="radio-group">
+          <input
+            type="radio"
+            id="white"
+            name="color"
+            value="WHITE"
+            style="margin-bottom: 3px"
+            [(ngModel)]="position.color"
+          />
+          <label for="white">White</label>
+          <input
+            type="radio"
+            id="black"
+            name="color"
+            value="BLACK"
+            style="margin-bottom: 3px"
+            [(ngModel)]="position.color"
+          />
+          <label for="black">Black</label>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <button class="right-left" *ngIf="!firstTimePlace" (click)="onRotate('LEFT')">
+    Left
+  </button>
+  <button
+    *ngIf="!firstTimePlace && showFirstMoveButtons"
+    (click)="onFirstMove(2)"
+    class="move"
+  >
+    Move 2
+  </button>
+  <button class="move" *ngIf="!firstTimePlace" (click)="onFirstMove(1)">
+    {{ showFirstMoveButtons ? "Move 1" : "Move" }}
+  </button>
+  <button
+    *ngIf="!firstTimePlace"
+    class="right-left"
+    (click)="onRotate('RIGHT')"
+  >
+    Right
+  </button>
+  <button class="report-button" *ngIf="!firstTimePlace" (click)="onReport()">
+    REPORT
+  </button>
+  <button class="place-button" (click)="onPlace()">PLACE</button>
+</div>

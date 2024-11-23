@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+  <app-control-button
+    (place)="onPlace($event)"
+    (moveAction)="onMove($event)"
+  ></app-control-button>
+  <div class="main-container">
+    <app-chess-board [pawnPosition]="pawnPosition"></app-chess-board>
+    <div class="move-history">
+      <h2>History</h2>
+      <ul>
+        <li *ngFor="let action of moveHistory">{{ action }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

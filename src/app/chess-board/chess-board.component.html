@@ -1,0 +1,27 @@
+<div class="chessboard">
+  <div *ngFor="let row of board; let i = index">
+    <div
+      *ngFor="let col of row.slice().reverse(); let j = index"
+      class="square"
+      [ngClass]="{ black: isBlackSquare(i, j) }"
+    >
+      <span class="coordinate">{{ 7 - j }},{{ i }}</span>
+      <img
+        *ngIf="isPawnPosition(i, 7 - j)"
+        [src]="
+          pawnPosition.color == 'WHITE'
+            ? 'assets/images/white_pawn.png'
+            : 'assets/images/black_pawn.png'
+        "
+        alt="pawnImage"
+      />
+      <div
+        *ngIf="isPawnPosition(i, 7 - j)"
+        class="direction-arrow"
+        [ngStyle]="getDirectionStyle()"
+      >
+        ▲
+      </div>
+    </div>
+  </div>
+</div>
