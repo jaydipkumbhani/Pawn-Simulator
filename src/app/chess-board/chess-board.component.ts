@@ -23,7 +23,7 @@ export class ChessBoardComponent {
     if (!this.pawnPosition) {
       return {};
     }
-    console.log(this.pawnPosition);
+    console.log('starting==>', this.pawnPosition);
     const directionMap: any = {
       NORTH: {
         top: '-2px',
@@ -48,20 +48,5 @@ export class ChessBoardComponent {
     };
 
     return directionMap[this.pawnPosition.direction || 'NORTH'];
-  }
-
-  getArrowClass(): string {
-    switch (this.pawnPosition?.direction) {
-      case 'NORTH':
-        return 'arrow-north';
-      case 'SOUTH':
-        return 'arrow-south';
-      case 'EAST':
-        return 'arrow-east';
-      case 'WEST':
-        return 'arrow-west';
-      default:
-        return '';
-    }
   }
 }
